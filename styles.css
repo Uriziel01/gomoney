@@ -1,0 +1,209 @@
+:root {
+    --blue1: #071F45;
+    --blue2: #42A9EB;
+    --blue3: #72D9FF;
+}
+
+.bg {
+    background-color:var(--blue1);
+}
+.floating-box {
+    position:fixed;
+    right:1rem;
+    top:1rem;
+    width:calc(50% - 1rem);
+    height:calc(100% - 2rem);
+    opacity:.8;
+    background: linear-gradient(var(--blue3), var(--blue2));
+    background: linear-gradient(180deg, #42A9EB, #42A9EB, #071F45);
+    background-size: 400% 400%;
+    animation: gradient 50s ease infinite;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+.arrow {
+    border: solid #FFFFFF;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+.floating-box::after {
+    content: '';
+    position:absolute;
+    top:50%;
+    transform: translate(-50%, -50%);
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+    background: var(--blue1);
+    z-index: 9;
+}
+
+.floating-go {
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    perspective: 1000px;
+    backface-visibility: none;
+}
+.circle {
+    border-radius: 500px;
+    background: radial-gradient(#56BDFF, var(--blue2));
+    background: conic-gradient(#72D9FF, var(--blue2), var(--blue2), var(--blue2), #72D9FF);
+    padding:.5rem;
+    color: var(--blue1);
+    height: 72px;
+    width: 72px;
+    line-height: 56px;
+    transform-style: preserve-3d;
+}
+.click { 
+    animation: pulse-move 1s ease infinite;
+}
+
+.pulsing {
+    animation: pulse 1s ease infinite;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.font-weight-500 {
+    font-weight: 500;
+}
+.font-weight-600 {
+    font-weight: 600;
+}
+.font-weight-700 {
+    font-weight: 700;
+}
+.font-weight-800 {
+    font-weight: 800;
+}
+.font-weight-900 {
+    font-weight: 900;
+}
+#particles-js {
+    z-index: -1;
+}
+.stripe {
+    display:inline-block;
+    border:1px solid rgba(0,0,0,.3);
+}
+
+.stripe-1 {
+    background: linear-gradient(90deg, var(--blue2) 0%, var(--blue2) 47%, var(--blue2) 47%,var(--blue3) 47%, var(--blue3) 100%);
+    width:22px;
+    height:6px;
+}
+.stripe-2 {
+    background: linear-gradient(90deg, var(--blue2) 0%, var(--blue2) 47%, var(--blue2) 47%,var(--blue3) 47%, var(--blue3) 100%);
+    width:30px;
+    height:6px;
+}
+.stripe-3 {
+    background: linear-gradient(90deg, var(--blue2) 0%, var(--blue2) 47%, var(--blue2) 47%,var(--blue3) 47%, var(--blue3) 100%);
+    width:40px;
+    height:6px;
+}
+.stripe-4 {
+    background: linear-gradient(90deg, var(--blue2) 0%, var(--blue2) 47%, var(--blue2) 47%,var(--blue3) 47%, var(--blue3) 100%);
+    width:52px;
+    height:6px;
+}
+.no-pointer-events {
+    pointer-events:none;
+}
+.form {
+    opacity:0;
+    top:0;
+    z-index: 99;
+    width:100%;
+    height:100%;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.join, input#email {
+    border: none;
+    background-color: rgba(0,0,0,0.1);
+    padding: 1rem;
+    color: #FFFFFF;
+    border-radius: 50px;
+    height: 70px;
+    font-size: 20px;
+    width: 77%;
+    outline:none;
+    box-shadow: none;
+    transition: all .3s ease-in-out;
+}
+.join {
+    width:20%
+}
+.join:hover {
+    background-color: rgba(0,0,0,0.3);
+    transform: scale(1.1);
+}
+::placeholder {
+    color: rgba(255,255,255,.8);
+    opacity: .8;
+  }
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes pulse-move {
+    0% {
+        transform: translate(-50%, -70%);
+    }
+    20% {
+        transform: translate(-50%, calc(-70% - 10px));
+    }
+    100% {
+        transform: translate(-50%, -70%);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1.0);
+    }
+    20% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.0);
+    }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 0%;
+	}
+	50% {
+		background-position: 0% 60%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
+}
+
+@media (max-width: 768px),  (max-height: 500px) {
+    .revolution.h1 {
+        font-size:26px;
+    }
+    .revolution .display-2 {
+        font-size:60px;
+    }
+}
+.mix-blend-mode {
+    background: url('https://images.unsplash.com/photo-1550353127-b0da3aeaa0ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');
+    background-size: cover;
+    background-color: var(--blue2);
+    background-blend-mode: multiply;
+}

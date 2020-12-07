@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Go Money - Faktoring</title>
+  <meta name="description" content="Go Money - Faktoring">
+  <meta name="author" content="RedMal">
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body style="height: 100vh">
+    <div class="bg position-fixed h-100 w-100">
+    <div id="particles-js" class=" mix-blend-mode bg position-fixed h-100 w-100">
+    </div>
+        <div class="dash" data-w1="50" data-w2="100"></div>
+    <svg style="display:none;position:fixed;z-index:9999;pointer-events:none" id="svg" width="100%" height="100%" viewBox="-400 -150 800 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+        <defs>
+          <path id="sec" d="M0,-140A140,140 0 0,1 0,140A140,140 0 0,1 0,-140"
+            stroke-dasharray="880" stroke-dashoffset="-880.1" fill="none">
+            <animate id="second" attributeName="stroke-dashoffset" 
+              dur="1s" repeatCount="60"
+              begin="0s;second.end" additive="sum" accumulate="sum"
+              calcMode="spline" values="0;-14.66" keyTimes="0;1" 
+              keySplines="0.42 0.0 0.58 1.0"/>
+          </path>
+          <mask id="mask" maskUnits="userSpaceOnUse" x="-150" y="-150" width="300" height="300">
+            <g stroke-width="10" stroke-linecap="round" stroke="white">
+              <use xlink:href="#sec" x="0" y="0"/>
+            </g>
+          </mask>
+        </defs>
+        <rect x="-150" y="-150" width="100%" height="100%" fill='transparent'/>
+        <g stroke-width="10" stroke-linecap="round" mask="url(#mask)">
+          <g stroke="rgba(255,255,255, .2)" >
+            <use xlink:href="#sec"/>
+          </g>
+        </g>
+      </svg>
+    <div class="px-3 py-4 position-relative" style="z-index:999">
+        <span class="h1 circle circle-1 d-inline-block font-weight-800 shadow-lg">Go</span>
+        <span class="h1 text-white font-weight-600 money">money</span>
+        <div class="d-inline-flex flex-column">
+        <div class="stripe stripe-1"></div>
+        <div class="stripe stripe-2"></div>
+        <div class="stripe stripe-3"></div>
+        <div class="stripe stripe-4"></div>
+        </div>
+    </div>
+    <div class="floating-go cursor-pointer pulsing">
+        <span class="h1 circle circle-2 d-inline-block font-weight-800 shadow-lg m-0" onclick="onclick1()">Go</span>
+        <div class="w-100 h-100 p-3 form no-pointer-events" style="position:absolute">
+            <input type="email" placeholder="Adres e-mail" id="email">
+            <span class="join cursor-pointer" onclick="submitForm()">Dołącz</span>
+        </div>
+    </div>
+    <span class="text-white text-center click" style="pointer-events:none;position:absolute;opacity:0;top:45%;left:50%;z-index: 999;transform:translate(-50%,-50%)">
+        <div>Kliknij i dołącz do <strong>rewolucji</strong></div>
+        <div class=""><i class="arrow down"></i></div>
+    </span>
+    <div class="floating-box shadow-lg d-none d-md-block rounded"></div>
+    </div>
+    <div class="h1 text-white revolution" style="text-shadow:1px 1px 10px rgba(0,0,0,.3);position:fixed;bottom:1rem;left: 1rem;">
+        <div class="d-inline-block font-weight-600">Nadchodzi</div>
+        <div class="d-inline-block font-weight-600">finansowa</div>
+        <div class="d-block display-2 font-weight-700">rewolucja</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
+    <script>
+        window.clicked = false;
+        window.onload = function(){
+                var now = new Date();
+                var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+                var curr = h * 60 * 60 + m * 60 + s;
+                svg.setCurrentTime(curr);
+                particlesJS.load('particles-js', 'particlesjs-config.json', function() {
+            });
+        };
+        gsap.from('#particles-js', { opacity:0, delay:.2 });
+        gsap.from('.circle-1', { yPercent: 20, opacity:0, delay:1.5, ease: "power2.out" });
+        gsap.from('.floating-box', { xPercent: 1, opacity:0, duration: 1.2, delay: 1.6,  ease: "power2.out" });
+        gsap.from('.circle-2', { rotationY: '+=180', opacity:0, duration: 1.0, scale:15.0, delay: .5, ease: "power2.out" });
+        gsap.from('.money', { opacity:0, delay: 2.0 });
+        TweenMax.staggerFrom(".revolution div", 1, {delay:2.6, xPercent:10, scale:1.15, opacity:0, ease: "power2.out"}, .9);
+        TweenMax.staggerFrom(".stripe", 1, {delay:3.5,transformOrigin: "0% 50%", scaleX: 0, ease:  "power3.inOut"}, .15);
+        setTimeout(() => {
+            if(!window.clicked) {
+                gsap.to('.click', { opacity:1, duration: 1.0 });
+            }
+        }, 6500);
+
+        function submitForm() {
+            alert('Formularz wymagana serwera');
+        }
+        function onclick1() {
+            window.clicked = true;
+            document.querySelector('.floating-go').classList.remove('pulsing');
+            document.querySelector('.form').classList.remove('no-pointer-events');
+            gsap.to('.click', { opacity:0 });
+            gsap.to('.circle-2', { color:'transparent' });
+            gsap.to('.circle-2', { rotationY: '180', height: '100px', width:'490px', duration: 1.0, ease: "power2.out" });
+            gsap.to('.form', { rotationY: '0' });
+            gsap.to('.form', { rotationY: '0', opacity:1.0, delay: .65, ease: "power2.out" });
+        }
+    </script>
+</body>
+</html>
